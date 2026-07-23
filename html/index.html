@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow | Smart Task Management</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <section id="login-screen" class="screen card-panel">
+            <div class="brand">
+                <div class="logo-icon">✓</div>
+                <h2>TaskFlow</h2>
+                <p>Welcome! Log in to manage your schedule</p>
+            </div>
+
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" placeholder="Enter username..." required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter password..." required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+
+            <div class="auth-footer">
+                <span>Don't have an account yet?</span>
+                <button id="go-to-signup" class="btn-link">Quick Sign Up</button>
+            </div>
+        </section>
+
+        <section id="signup-screen" class="screen card-panel" style="display: none;">
+            <div class="brand">
+                <div class="logo-icon">✓</div>
+                <h2>Create an Account</h2>
+                <p>Join us and start getting organized right now</p>
+            </div>
+
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-username">Choose a username</label>
+                    <input type="text" id="signup-username" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Choose a strong password</label>
+                    <input type="password" id="signup-password" placeholder="At least 6 characters..." required>
+                </div>
+                <button type="submit" class="btn btn-success">Complete Sign Up & Enter</button>
+            </form>
+
+            <div class="auth-footer">
+                <span>Already registered?</span>
+                <button id="go-to-login" class="btn-link">Back to Log In</button>
+            </div>
+        </section>
+
+        <section id="todo-screen" class="screen main-dashboard" style="display: none;">
+
+            <header class="dashboard-header">
+                <div class="user-greeting">
+                    <span id="welcome-user">Hello, Guest</span>
+                </div>
+                <button id="logout-btn" class="btn btn-danger-outline">Log Out</button>
+            </header>
+
+            <div class="dashboard-grid">
+
+                <aside class="dashboard-sidebar">
+
+                    <div class="card-panel search-box">
+                        <h3>Quick Search</h3>
+                        <form id="search-form" class="search-group" onsubmit="return searchTasks(event)">
+                            <input type="text" id="search-input" placeholder="Search by task name...">
+                            <button type="submit" id="search-btn" class="btn btn-secondary">Search</button>
+                        </form>
+                    </div>
+
+                    <div class="card-panel add-task-box">
+                        <h3>New Task</h3>
+                        <form id="add-task-form">
+                            <div class="form-group">
+                                <label for="task-name">Task Name *</label>
+                                <input type="text" id="task-name" placeholder="What needs to be done?" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-date">Due Date *</label>
+                                <input type="date" id="task-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-desc">Description / Notes</label>
+                                <textarea id="task-desc" rows="3"
+                                    placeholder="Additional details about the task..."></textarea>
+                            </div>
+                            <div id="add-task-error" class="error-message"></div>
+                            <button type="submit" class="btn btn-primary w-100">Add to List</button>
+                        </form>
+                    </div>
+                </aside>
+
+                <main class="dashboard-content">
+                    <div class="content-header">
+                        <h2>My Schedule and Tasks</h2>
+                    </div>
+
+                    <ul id="todo-items-list" class="todo-grid">
+                    </ul>
+                </main>
+
+            </div>
+        </section>
+
+    </div>
+    <template id="todo-item-template">
+        <li class="todo-item-card">
+            <div class="todo-card-header">
+                <h4 class="template-task-name">Task Name</h4>
+                <span class="template-task-date">Date</span>
+            </div>
+            <p class="template-task-desc">Task description.</p>
+            <div class="todo-card-actions">
+                <button type="button" class="edit-btn">Edit</button>
+                <button type="button" class="done-btn">Done! ✅</button>
+                <button type="button" class="delete-btn">Delete</button>
+            </div>
+        </li>
+    </template>
+
+
+    <script src="../js/Todo.js"></script>
+    <script src="../js/User.js"></script>
+
+    <script src="../js/TodoDataBase.js"></script>
+    <script src="../js/UserDataBase.js"></script>
+
+    <script src="../js/TodoServer.js"></script>
+    <script src="../js/UserServer.js"></script>
+
+    <script src="../js/Network.js"></script>
+    <script src="../js/FAJAX.js"></script>
+
+    <script src="../js/spa.js"></script>
+
+    <script src="../js/ajax.js"></script>
+    <script src="../js/client.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+
+</html>
